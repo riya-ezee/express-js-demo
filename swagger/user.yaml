@@ -1,0 +1,97 @@
+tags:
+  - name: User
+    description: User API
+
+paths:
+  # [GET] users/
+  /users/:
+    get:
+      tags:
+        - User
+      summary: Find user
+      responses:
+        200:
+          description: "OK"
+
+    # [POST] users/
+    post:
+      tags:
+        - User
+      summary: Add User
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Add user"
+          required: true
+          schema:
+            $ref: "#/definitions/addUser"
+      responses:
+        200:
+          description: "OK"
+
+  # [GET] screens/id
+  /users/{id}:
+    get:
+      tags:
+        - User
+      summary: Find user by id
+      parameters:
+        - name: id
+          in: path
+          description: User id
+      responses:
+        200:
+          description: "OK"
+
+    # [DELETE] users/id
+    delete:
+      tags:
+        - User
+      summary: Delete user by id
+      parameters:
+        - name: id
+          in: path
+          description: user id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "OK"
+
+    # [PUT] users/id
+    put:
+      tags:
+        - User
+      summary: Update user by id
+      parameters:
+        - name: id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: user data
+          required: true
+          schema:
+            $ref: "#/definitions/updateUser"
+      responses:
+        200:
+          description: "OK"
+
+# definitions
+definitions:
+  addUser:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+  updateUser:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+
+schemes:
+  - https
+  - http
