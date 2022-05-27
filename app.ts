@@ -4,9 +4,10 @@ import * as bodyParser from "body-parser";
 import usersRouter from "./src/routes/user.route";
 import swaggerJSDoc from "swagger-jsdoc";
 import * as swaggerUi from "swagger-ui-express";
-
+var cors = require('cors')
 // const app = require("express");
 const app = express();
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", new usersRouter().router);
